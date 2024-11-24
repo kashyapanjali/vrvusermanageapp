@@ -11,6 +11,7 @@ function UserManageMent() {
   const [currentLinkName, setCurrentLinkName] = useState("User Management");
   const [users, setUsers] = useState([]);
   const [roles, setRoles] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
 
   const addUser = () => {
     const newUser = {
@@ -62,12 +63,23 @@ function UserManageMent() {
     setRoles(updatedRoles);
   };
 
+  const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
+  const filteredUsers = users.filter(
+    (user) =>
+      user.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      user.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      (user.contactNo && user.contactNo.toString().includes(searchQuery))
+  );
+
   const renderComponent = () => {
     switch (activeComponent) {
       case "/":
         return <LoginSignUp />;
       case "userdetails":
-        return <UserManageMentDetails users={users} />;
+        return <UserManageMentDetails users={filteredUsers} />;
       case "roles":
         return (
           <RoleManagement
@@ -137,7 +149,13 @@ function UserManageMent() {
         {/* Header Right */}
         <div className="headerright">
           <div className="search">
-            <input type="search" placeholder="Search User" required />
+            <input
+              type="search"
+              placeholder="Search User"
+              required
+              value={searchQuery}
+              onChange={handleSearchChange}
+            />
             <button className="search-btn">
               <img src="/search.png" alt="Search" className="search-icon" />
             </button>
