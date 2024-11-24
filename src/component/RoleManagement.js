@@ -45,7 +45,6 @@ function RoleManagement({ roles, saveUserDetails, onSave }) {
         <table className="role-table">
           <thead>
             <tr>
-              {/* that action will go to usermanagementdetails file */}
               <th>Name</th>
               <th>Profile (Email, Contact No)</th>
               <th>Designation</th>
@@ -59,7 +58,7 @@ function RoleManagement({ roles, saveUserDetails, onSave }) {
                 <td>
                   <input
                     type="text"
-                    value={role.name}
+                    value={role.name || ""}
                     onChange={(e) => handleRoleChange(index, e.target.value)}
                     placeholder="Enter role name"
                   />
@@ -100,8 +99,18 @@ function RoleManagement({ roles, saveUserDetails, onSave }) {
                   </div>
                 </td>
                 <td>
-                  <button className="action-btn edit-btn">Edit</button>
-                  <button className="action-btn delete-btn">Delete</button>
+                  <button
+                    className="action-btn edit-btn"
+                    disabled={!role.permissions.write} // Enable only if 'W' (write) permission is true
+                  >
+                    Edit
+                  </button>
+                  <button
+                    className="action-btn delete-btn"
+                    disabled={!role.permissions.delete} // Enable only if 'D' (delete) permission is true
+                  >
+                    Delete
+                  </button>
                 </td>
               </tr>
             ))}
