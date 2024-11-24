@@ -12,7 +12,7 @@ function UserManageMent() {
   const [users, setUsers] = useState([]);
   const [roles, setRoles] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
-
+  // temporary array take to store details
   const addUser = () => {
     const newUser = {
       name: "",
@@ -34,13 +34,13 @@ function UserManageMent() {
       },
     ]);
   };
-
+  // save user details
   const saveUserDetails = (index, userDetails) => {
     const updatedUsers = [...users];
     updatedUsers[index] = userDetails;
     setUsers(updatedUsers);
   };
-
+  // save the roles
   const handleSaveRoles = (updatedRoles) => {
     const updatedUsers = users.map((user, index) => ({
       ...user,
@@ -68,6 +68,7 @@ function UserManageMent() {
     setSearchQuery(event.target.value);
   };
 
+  // funtion for search
   const filteredUsers = users.filter(
     (user) =>
       user.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
