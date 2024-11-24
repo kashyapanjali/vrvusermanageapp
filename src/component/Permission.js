@@ -7,6 +7,11 @@ function Permission({ roles, saveUserDetails, onSave }) {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5; // Set the number of items per page
 
+  // BACKEND ENDPOINT: Save permissions
+  // POST /api/permissions
+  // Request Body: { roleId: number, permissions: { read: boolean, write: boolean, delete: boolean, add: boolean } }
+  // Response: { success: boolean, message: string }
+
   // Update local state when roles prop changes
   useEffect(() => {
     setUpdatedRoles(roles);

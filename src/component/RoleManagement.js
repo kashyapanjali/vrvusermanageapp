@@ -9,6 +9,15 @@ function RoleManagement({ roles, saveUserDetails, onSave }) {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
 
+  // BACKEND ENDPOINT: Get all roles
+  // GET /api/roles
+  // Response: { success: boolean, roles: array }
+
+  // BACKEND ENDPOINT: Update role details
+  // PUT /api/roles/:roleId
+  // Request Body: { name: string, email: string, contactNo: string, permissions: object }
+  // Response: { success: boolean, message: string }
+
   const handleRoleChange = (index, newName) => {
     const newRoles = [...updatedRoles];
     newRoles[index].name = newName;

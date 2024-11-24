@@ -8,6 +8,27 @@ function UserManagementDetails({ users }) {
   const itemsPerPage = 5;
 
   // Load saved statuses from local storage or initialize them from users
+
+  // backend endpoint for - add, put, delete or update
+  // BACKEND ENDPOINT: Add a new user
+  // POST /api/users
+  // Request Body: { name: string, email: string, contactNo: string, designation: string }
+  // Response: { success: boolean, message: string, userId: number }
+
+  // BACKEND ENDPOINT: Get all users
+  // GET /api/users
+  // Query Parameters (optional): ?searchQuery=string
+  // Response: { success: boolean, users: array }
+
+  // BACKEND ENDPOINT: Update user details
+  // PUT /api/users/:userId
+  // Request Body: { name: string, email: string, contactNo: string, designation: string }
+  // Response: { success: boolean, message: string }
+
+  // BACKEND ENDPOINT: Delete a user
+  // DELETE /api/users/:userId
+  // Response: { success: boolean, message: string }
+
   useEffect(() => {
     const savedStatuses =
       JSON.parse(localStorage.getItem("userStatuses")) || {};
