@@ -44,6 +44,7 @@ function UserManageMent() {
   const handleSaveRoles = (updatedRoles) => {
     const updatedUsers = users.map((user, index) => ({
       ...user,
+      name: updatedRoles[index]?.name || user.name,
       designation: updatedRoles[index]?.designation || user.designation,
       email: updatedRoles[index]?.email || user.email,
       contactNo: updatedRoles[index]?.contactNo || user.contactNo,
